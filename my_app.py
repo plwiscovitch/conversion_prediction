@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import xgboost
 
 # load model
 with open("predict_conversion_final.pkl", "rb") as model_file:
