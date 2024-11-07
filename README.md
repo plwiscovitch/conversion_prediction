@@ -1,4 +1,4 @@
-##Customer Conversion Prediction
+Customer Conversion Prediction
 
 This project explores various machine learning models to determine whether conversion will occur (whether a purchase will be made or not).
 Original dataset acquired from https://www.kaggle.com/datasets/rabieelkharoua/predict-conversion-in-digital-marketing-dataset.
