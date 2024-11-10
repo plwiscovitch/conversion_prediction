@@ -1,7 +1,10 @@
 import streamlit as st
 import pickle
 import pandas as pd
-import xgboost
+import numpy as np
+import xgboost as xgb
+import sklearn
+
 
 # load model
 with open("predict_conversion_final.pkl", "rb") as model_file:
@@ -58,9 +61,17 @@ def get_user_input():
 # get user input
 input_df = get_user_input()
 
+# placeholder for prediction output
+prediction_placeholder = st.empty()
+
 # get prediction
 if st.button("Predict Conversion"):
     prediction = model.predict(input_df)
-    st.write("Conversion prediction:", "Yes, purchase wil be made." if prediction[0] == 1 else "No purchase will be made.")
+    prediction_text = "Yes, a purchase will be made." if prediction[0] == 1 else "No purchase will be made."
+
+    # stylize output
+    prediction_placeholder.markdown(f"<h3 style='color: blue; font-size: 24px;'>Conversion prediction: {prediction_text}</h3>", 
+        unsafe_allow_html=True
+    )
 
 
