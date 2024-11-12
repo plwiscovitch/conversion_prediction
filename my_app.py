@@ -67,11 +67,14 @@ prediction_placeholder = st.empty()
 # get prediction
 if st.button("Predict Conversion"):
     prediction = model.predict(input_df)
+    probabilities = model.predict_proba(input_df)[0]
     prediction_text = "Yes, a purchase will be made." if prediction[0] == 1 else "No purchase will be made."
+    probability_text = f"Probability of 'Yes': {probabilities[1]:.2%}, Probability of 'No': {probabilities[0]:.2%}"
 
     # stylize output
-    prediction_placeholder.markdown(f"<h3 style='color: blue; font-size: 24px;'>Conversion prediction: {prediction_text}</h3>", 
+    prediction_placeholder.markdown(
+        f"<h3 style='color: blue; font-size: 24px;'>Conversion prediction: {prediction_text}</h3>"
+        f"<h4>Probability: {probability_text}</h4>",
         unsafe_allow_html=True
     )
-
 
